@@ -2,6 +2,8 @@
 
 Use um teclado **MX Keys S com teclas americanas (ANSI)** no macOS digitando como um **ABNT2 brasileiro**: `ç`, `~`, `´`, `^` e `¨` funcionando do jeito que você já conhece, sem precisar decorar combinações.
 
+![Teclado Logitech MX Keys S](teclado-mxkey-s.jpg)
+
 ![Mapa do teclado](mapa-teclado-mx-keys-abnt2.png)
 
 ---
