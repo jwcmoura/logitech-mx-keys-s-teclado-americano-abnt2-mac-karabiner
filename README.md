@@ -14,6 +14,7 @@ Use um teclado **MX Keys S com teclas americanas (ANSI)** no macOS digitando com
 - [Passo a passo](#passo-a-passo)
 - [Mapa das teclas](#mapa-das-teclas)
 - [Teclas extras com Option](#teclas-extras-com-option)
+- [Resumo das configurações](#resumo-das-configurações)
 - [Como funciona o código](#como-funciona-o-código)
 - [Usando outro teclado](#usando-outro-teclado)
 - [Problemas comuns](#problemas-comuns)
@@ -79,75 +80,123 @@ O Logi Options+ **não é necessário** para o layout. Ele cuida das teclas de f
 3. Deixe **Swap ISO layout-specific keys desligado**.
 4. Opcional: ligue **Ignore vendor events**, que o próprio Karabiner recomenda para teclados que não são da Apple.
 
-### 4. Adicionar a regra
+### 4. Instalar o código
 
-Você pode instalar a regra de duas formas.
+O código abaixo é a **regra completa**. É tudo o que você precisa colocar no Karabiner, de uma vez só.
 
-**Opção A: colar a regra (mais simples)**
+**O que ele faz:** cria as duas teclas do ABNT2 que o teclado americano não tem, usando a tecla **Option**.
 
-1. No Karabiner, vá em **Complex Modifications → Add your own rule**.
-2. Cole o conteúdo da regra abaixo e confirme.
+| Você aperta | Sai |
+|---|---|
+| `Option` + `/` | `/` |
+| `Option` + `Shift` + `/` | `?` |
+| `Option` + `\` | `\` |
+| `Option` + `Shift` + `\` | `\|` |
+
+A regra vale só para o **MX KEYS S**. O teclado do próprio Mac não é afetado.
+
+**Como usar:**
+
+1. Abra o **Karabiner-Elements** e vá em **Complex Modifications**.
+2. Clique em **Add your own rule**.
+3. Apague o que estiver na caixa de texto, cole o código abaixo e clique em **OK**.
+4. A regra **MX Keys S: Option + / = / e ?; Option + \ = \ e |...** aparece na lista, ativada.
 
 ```json
 {
-  "description": "MX Keys S: Option + / = / e ?; Option + \\ = \\ e | (teclas extras do ABNT2)",
-  "manipulators": [
-    {
-      "type": "basic",
-      "from": {
-        "key_code": "slash",
-        "modifiers": { "mandatory": ["option", "shift"] }
-      },
-      "to": [{ "key_code": "international1", "modifiers": ["left_shift"] }],
-      "conditions": [
-        { "type": "device_if", "identifiers": [{ "vendor_id": 1133, "product_id": 45944 }] }
-      ]
-    },
-    {
-      "type": "basic",
-      "from": {
-        "key_code": "slash",
-        "modifiers": { "mandatory": ["option"] }
-      },
-      "to": [{ "key_code": "international1" }],
-      "conditions": [
-        { "type": "device_if", "identifiers": [{ "vendor_id": 1133, "product_id": 45944 }] }
-      ]
-    },
-    {
-      "type": "basic",
-      "from": {
-        "key_code": "backslash",
-        "modifiers": { "mandatory": ["option", "shift"] }
-      },
-      "to": [{ "key_code": "grave_accent_and_tilde", "modifiers": ["left_shift"] }],
-      "conditions": [
-        { "type": "device_if", "identifiers": [{ "vendor_id": 1133, "product_id": 45944 }] }
-      ]
-    },
-    {
-      "type": "basic",
-      "from": {
-        "key_code": "backslash",
-        "modifiers": { "mandatory": ["option"] }
-      },
-      "to": [{ "key_code": "grave_accent_and_tilde" }],
-      "conditions": [
-        { "type": "device_if", "identifiers": [{ "vendor_id": 1133, "product_id": 45944 }] }
-      ]
-    }
-  ]
+    "description": "MX Keys S: Option + / = / e ?; Option + \\ = \\ e | (teclas extras do ABNT2)",
+    "manipulators": [
+        {
+            "conditions": [
+                {
+                    "identifiers": [
+                        {
+                            "product_id": 45944,
+                            "vendor_id": 1133
+                        }
+                    ],
+                    "type": "device_if"
+                }
+            ],
+            "from": {
+                "key_code": "slash",
+                "modifiers": { "mandatory": ["option", "shift"] }
+            },
+            "to": [
+                {
+                    "key_code": "international1",
+                    "modifiers": ["left_shift"]
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "conditions": [
+                {
+                    "identifiers": [
+                        {
+                            "product_id": 45944,
+                            "vendor_id": 1133
+                        }
+                    ],
+                    "type": "device_if"
+                }
+            ],
+            "from": {
+                "key_code": "slash",
+                "modifiers": { "mandatory": ["option"] }
+            },
+            "to": [{ "key_code": "international1" }],
+            "type": "basic"
+        },
+        {
+            "conditions": [
+                {
+                    "identifiers": [
+                        {
+                            "product_id": 45944,
+                            "vendor_id": 1133
+                        }
+                    ],
+                    "type": "device_if"
+                }
+            ],
+            "from": {
+                "key_code": "backslash",
+                "modifiers": { "mandatory": ["option", "shift"] }
+            },
+            "to": [
+                {
+                    "key_code": "grave_accent_and_tilde",
+                    "modifiers": ["left_shift"]
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "conditions": [
+                {
+                    "identifiers": [
+                        {
+                            "product_id": 45944,
+                            "vendor_id": 1133
+                        }
+                    ],
+                    "type": "device_if"
+                }
+            ],
+            "from": {
+                "key_code": "backslash",
+                "modifiers": { "mandatory": ["option"] }
+            },
+            "to": [{ "key_code": "grave_accent_and_tilde" }],
+            "type": "basic"
+        }
+    ]
 }
 ```
 
-**Opção B: importar o arquivo**
-
-1. Copie o arquivo [`mx-keys-abnt2.json`](mx-keys-abnt2.json) para a pasta:
-   ```
-   ~/.config/karabiner/assets/complex_modifications/
-   ```
-2. No Karabiner, vá em **Complex Modifications → Add predefined rule**.
-3. Clique em **Enable** ao lado da regra **MX Keys S (ANSI) com layout ABNT2**.
+> Prefere importar um arquivo? O [`mx-keys-abnt2.json`](mx-keys-abnt2.json) deste repositório contém exatamente a mesma regra.
 
 ### 5. Testar
 
@@ -204,11 +253,28 @@ O ABNT2 tem duas teclas que o MX Keys não tem. Elas foram criadas no Karabiner,
 
 ---
 
+## Resumo das configurações
+
+Tudo o que precisa estar configurado para funcionar:
+
+| Onde | Configuração |
+|---|---|
+| macOS → Fontes de Entrada | Somente **Português – ABNT2** |
+| macOS → Tipo de teclado | **ANSI** |
+| Karabiner → Devices → MX KEYS S | **Modify events** ligado |
+| Karabiner → Devices → MX KEYS S | **Swap ISO layout-specific keys** desligado |
+| Karabiner → Devices → MX KEYS S | **Ignore vendor events** ligado (recomendado) |
+| Karabiner → Complex Modifications | Regra **MX Keys S: Option + / = / e ?...** ativada |
+
+O `ç`, os acentos e o resto das teclas vêm do layout **Português – ABNT2** do próprio macOS. Se houver outras regras do Karabiner ativas para este teclado (por exemplo, remapeamentos antigos de `;`, `'` ou `[`), desative-as, porque entram em conflito.
+
+---
+
 ## Como funciona o código
 
 O macOS trata o ABNT2 como um teclado com 105 teclas (ISO), e o MX Keys S americano tem 104 (ANSI). Faltam duas teclas, então a regra cria as duas usando **Option**.
 
-Cada bloco do JSON faz uma coisa:
+Cada bloco do código faz uma coisa:
 
 - `from`: a tecla que você aperta.
   - `"key_code": "slash"` é a tecla `/` do teclado americano.
