@@ -1,350 +1,170 @@
-# Teclado Logitech MX Keys S (americano) com layout ABNT2 no Mac
+# Teclado americano com layout ABNT2 no Mac (Logitech MX Keys S)
 
-Use um teclado **MX Keys S com teclas americanas (ANSI)** no macOS digitando como um **ABNT2 brasileiro**: `ç`, `~`, `´`, `^` e `¨` funcionando do jeito que você já conhece, sem precisar decorar combinações.
+Como usar um teclado **físico americano (ANSI)** no macOS digitando como um **ABNT2 brasileiro**: `ç`, acentos, `º`, `ª`, aspas, barras, tudo no lugar certo, sem precisar comprar um teclado ABNT2.
 
-![Teclado Logitech MX Keys S](teclado-mxkey-s.jpg)
+Testado com o **Logitech MX Keys S** (versão americana) no macOS, usando **Karabiner-Elements**.
 
-![Mapa do teclado](mapa-teclado-mx-keys-abnt2.png)
-
----
-
-## Sumário
-
-- [O problema](#o-problema)
-- [A solução](#a-solução)
-- [O que você precisa](#o-que-você-precisa)
-- [Passo a passo](#passo-a-passo)
-- [Mapa das teclas](#mapa-das-teclas)
-- [Teclas extras com Option](#teclas-extras-com-option)
-- [Resumo das configurações](#resumo-das-configurações)
-- [Como funciona o código](#como-funciona-o-código)
-- [Usando outro teclado](#usando-outro-teclado)
-- [Problemas comuns](#problemas-comuns)
-- [Arquivos deste repositório](#arquivos-deste-repositório)
+![Mapa das teclas](teclado_abnt2_estilo_escuro.png)
 
 ---
 
-## O problema
+## Como funciona
 
-O teclado brasileiro (ABNT2) tem teclas que o teclado americano não tem:
+A solução tem 3 peças que trabalham juntas:
 
-- a tecla **`ç`**
-- as teclas de acento **`~ ^`** e **`´` + `` ` ``**
-- duas teclas extras: **`\ |`** (à esquerda do Z) e **`/ ? °`** (à direita do `;`)
-
-No MX Keys S americano essas teclas não existem, e as outras ficam em posições diferentes. Se você escolher o layout ABNT2 no Mac sem ajustar nada, o `ç` e os acentos saem em teclas que não combinam com o que está impresso, e o `§` aparece à esquerda do `1`.
-
-## A solução
-
-1. Usar o layout nativo **Português – ABNT2** do macOS, com o tipo de teclado **ANSI**.
-2. Usar o **Karabiner-Elements** para criar as duas teclas que faltam (`/ ?` e `\ |`), acessíveis com **Option**.
-
-Resultado: o layout ABNT2 inteiro funciona, e as duas teclas extras ficam em **Option + `/`** e **Option + `\`**.
+| # | Peça | O que resolve |
+|---|------|---------------|
+| 1 | **Layout ABNT2 do macOS** | Faz `ç`, `~`, `^`, `´`, `` ` ``, `[`, `]`, `;`, `:` etc. saírem nas teclas certas |
+| 2 | **"Swap ISO layout-specific keys"** (Karabiner-Elements) | Corrige a tecla `` ` `` (aspas simples e duplas) |
+| 3 | **Regras do Karabiner** (`mx-keys-s-abnt2.json`) | Recriam as 2 teclas extras do ABNT2 que o teclado americano não tem: `\ \|` e `/ ?` |
 
 ---
 
-## O que você precisa
+## Requisitos
 
-| Item | Para quê | Obrigatório |
-|---|---|---|
-| **macOS** | Layout ABNT2 nativo | Sim |
-| **[Karabiner-Elements](https://karabiner-elements.pqrs.org)** | Criar as teclas `/ ?` e `\ \|` que o teclado americano não tem | Sim |
-| **[Logi Options+](https://www.logitech.com/software/logi-options-plus.html)** | Teclas F, Easy-Switch e bateria do MX Keys S | Não |
-
-O Logi Options+ **não é necessário** para o layout. Ele cuida das teclas de função e do Easy-Switch, e funciona junto com o Karabiner sem conflito.
+- macOS
+- Teclado americano (ANSI). Este guia usa o Logitech MX Keys S.
+- [Karabiner-Elements](https://karabiner-elements.pqrs.org/) instalado (gratuito).
 
 ---
 
 ## Passo a passo
 
-### 1. Configurar o layout no macOS
+### 1. Instalar o Karabiner-Elements
 
-1. Abra **Ajustes do Sistema → Teclado → Fontes de Entrada → Editar**.
-2. Clique em **+**, escolha **Português** e adicione **Português – ABNT2**.
-3. Remova os outros layouts (por exemplo, U.S.) para não alternar sem querer.
-4. Em **Ajustes do Sistema → Teclado**, clique em **Alterar tipo de teclado…** e siga o assistente.
-5. Quando o assistente perguntar, escolha **ANSI**.
+1. Baixe em <https://karabiner-elements.pqrs.org/>.
+2. Instale e abra o app.
+3. Quando o macOS pedir, conceda as permissões: **Ajustes do Sistema → Privacidade e Segurança → Monitoramento de Entrada** e **Acessibilidade**, além de permitir a extensão de sistema do Karabiner. O próprio app guia você nessas telas.
 
-> O tipo **ANSI** é o que evita o `§` aparecendo à esquerda do `1`.
+### 2. Adicionar o layout ABNT2 no macOS
 
-### 2. Instalar o Karabiner-Elements
-
-1. Baixe e instale em [karabiner-elements.pqrs.org](https://karabiner-elements.pqrs.org).
-2. Abra o app e conceda as permissões que ele pedir:
-   - **Ajustes do Sistema → Privacidade e Segurança → Monitoramento de Entrada**
-   - **Extensões do sistema** (permita as do Karabiner)
-3. Reinicie o Mac se o Karabiner pedir.
+1. Abra **Ajustes do Sistema → Teclado → Fontes de Entrada → Editar…**
+2. Clique em **+** e escolha **Português** → o layout **ABNT2** (o nome exato pode variar conforme a versão do macOS).
+3. Adicione e, na barra de menus, **selecione esse layout** como o ativo.
 
 ### 3. Configurar o teclado no Karabiner
 
-1. No Karabiner, abra **Devices**.
-2. Ache **MX KEYS S (Logitech)** e ligue **Modify events**.
-3. Deixe **Swap ISO layout-specific keys desligado**.
-4. Opcional: ligue **Ignore vendor events**, que o próprio Karabiner recomenda para teclados que não são da Apple.
+1. No Karabiner-Elements, vá em **Devices**.
+2. Localize o seu teclado (ex.: **MX KEYS S (Logitech)**).
+3. Deixe as opções assim:
 
-### 4. Instalar o código
+| Opção | Estado |
+|-------|--------|
+| Modify events | **Ligado** |
+| Treat as a built-in keyboard | Desligado |
+| Disable the built-in keyboard while this device is connected | Desligado |
+| Manipulate caps lock LED | Ligado |
+| **Swap ISO layout-specific keys** | **Ligado** |
+| Ignore vendor events | **Ligado** (recomendado para teclados que não são da Apple) |
 
-O código abaixo é a **regra completa**. É tudo o que você precisa colocar no Karabiner, de uma vez só.
+> **Importante:** o **Modify events** precisa estar ligado para que as regras do próximo passo funcionem, e o **Swap ISO layout-specific keys** é o que acerta a tecla `` ` `` (aspas) no ABNT2.
 
-**O que ele faz:** cria as duas teclas do ABNT2 que o teclado americano não tem, usando a tecla **Option**.
+### 4. Descobrir o `vendor_id` e o `product_id` do seu teclado
 
-| Você aperta | Sai |
-|---|---|
-| `Option` + `/` | `/` |
-| `Option` + `Shift` + `/` | `?` |
-| `Option` + `\` | `\` |
-| `Option` + `Shift` + `\` | `\|` |
+O arquivo de regras já vem com os IDs do **MX Keys S** (`vendor_id: 1133`, `product_id: 45944`). **Se o seu teclado for outro, troque esses números.**
 
-A regra vale só para o **MX KEYS S**. O teclado do próprio Mac não é afetado.
+Para descobrir os seus:
 
-**Como usar:**
+1. Abra o **Karabiner-EventViewer** (instalado junto com o Karabiner).
+2. Vá na aba **Devices**.
+3. Procure o seu teclado e anote o **vendor_id** e o **product_id**.
 
-1. Abra o **Karabiner-Elements** e vá em **Complex Modifications**.
+### 5. Importar as regras (teclas extras do ABNT2)
+
+1. No Karabiner-Elements, vá em **Complex Modifications**.
 2. Clique em **Add your own rule**.
-3. Apague o que estiver na caixa de texto, cole o código abaixo e clique em **OK**.
-4. A regra **MX Keys S: Option + / = / e ?; Option + \ = \ e |...** aparece na lista, ativada.
+3. Apague o conteúdo do editor e **cole o conteúdo do arquivo [`mx-keys-s-abnt2.json`](mx-keys-s-abnt2.json)**.
+4. Se o seu teclado não for o MX Keys S, troque `product_id` e `vendor_id` (em todas as 4 regras) pelos valores do passo 4.
+5. Clique em **OK**. A regra aparece na lista e já fica **ativa**.
 
-```json
-{
-    "description": "MX Keys S: Option + / = / e ?; Option + \\ = \\ e | (teclas extras do ABNT2)",
-    "manipulators": [
-        {
-            "conditions": [
-                {
-                    "identifiers": [
-                        {
-                            "product_id": 45944,
-                            "vendor_id": 1133
-                        }
-                    ],
-                    "type": "device_if"
-                }
-            ],
-            "from": {
-                "key_code": "slash",
-                "modifiers": { "mandatory": ["option", "shift"] }
-            },
-            "to": [
-                {
-                    "key_code": "international1",
-                    "modifiers": ["left_shift"]
-                }
-            ],
-            "type": "basic"
-        },
-        {
-            "conditions": [
-                {
-                    "identifiers": [
-                        {
-                            "product_id": 45944,
-                            "vendor_id": 1133
-                        }
-                    ],
-                    "type": "device_if"
-                }
-            ],
-            "from": {
-                "key_code": "slash",
-                "modifiers": { "mandatory": ["option"] }
-            },
-            "to": [{ "key_code": "international1" }],
-            "type": "basic"
-        },
-        {
-            "conditions": [
-                {
-                    "identifiers": [
-                        {
-                            "product_id": 45944,
-                            "vendor_id": 1133
-                        }
-                    ],
-                    "type": "device_if"
-                }
-            ],
-            "from": {
-                "key_code": "backslash",
-                "modifiers": { "mandatory": ["option", "shift"] }
-            },
-            "to": [
-                {
-                    "key_code": "grave_accent_and_tilde",
-                    "modifiers": ["left_shift"]
-                }
-            ],
-            "type": "basic"
-        },
-        {
-            "conditions": [
-                {
-                    "identifiers": [
-                        {
-                            "product_id": 45944,
-                            "vendor_id": 1133
-                        }
-                    ],
-                    "type": "device_if"
-                }
-            ],
-            "from": {
-                "key_code": "backslash",
-                "modifiers": { "mandatory": ["option"] }
-            },
-            "to": [{ "key_code": "grave_accent_and_tilde" }],
-            "type": "basic"
-        }
-    ]
-}
-```
+> Quer que as regras valham para **qualquer** teclado? Remova o bloco `"conditions"` de cada regra. Atenção: isso também vale para o teclado interno do Mac.
 
-> Prefere importar um arquivo? O [`mx-keys-abnt2.json`](mx-keys-abnt2.json) deste repositório contém exatamente a mesma regra.
+### 6. Testar
 
-### 5. Testar
-
-Abra um editor de texto e confira:
-
-| Digite | Deve sair |
-|---|---|
-| tecla `;` | `ç` |
-| `Shift` + tecla `;` | `Ç` |
-| tecla `'` e depois `a` | `ã` |
-| `Option` + `/` | `/` |
-| `Option` + `Shift` + `/` | `?` |
-| `Option` + `\` | `\` |
-| `Option` + `Shift` + `\` | `\|` |
-
-Se quiser ver as teclas, ative o **Visualizador de Teclado** em **Ajustes do Sistema → Teclado → Fontes de Entrada → Mostrar menu de entrada na barra de menus**.
+Abra um editor de texto e confira a tabela abaixo. Se tudo saiu como esperado, está pronto.
 
 ---
 
-## Mapa das teclas
+## Mapa de teclas
 
-As teclas continuam com as letras americanas impressas, mas produzem o resultado do ABNT2:
+Legenda: **Tecla** é a tecla física, com a legenda **impressa no teclado americano**.
 
-| Tecla impressa | Sozinha | Com Shift | Observação |
-|---|---|---|---|
-| `` ` `` `~` | `'` | `"` | aspas simples e duplas |
-| `6` `^` | `6` | `¨` | trema (acento morto) |
-| `[` `{` | `´` | `` ` `` | acentos agudo e grave (mortos) |
-| `]` `}` | `[` | `{` | |
-| `\` `\|` | `]` | `}` | |
-| `;` `:` | `ç` | `Ç` | |
-| `'` `"` | `~` | `^` | til e circunflexo (mortos) |
-| `/` `?` | `;` | `:` | |
+### Layout ABNT2 do macOS (peça 1)
 
-As demais teclas (letras, números, `-`, `=`, `,` e `.`) continuam como estão.
+| Tecla | Sozinha | Shift | Option |
+|-------|---------|-------|--------|
+| `;` | `ç` | `Ç` | |
+| `'` | `~` (til, tecla morta) | `^` (circunflexo, tecla morta) | |
+| `[` | `´` (agudo, tecla morta) | `` ` `` (grave, tecla morta) | |
+| `6` | `6` | `¨` (trema, tecla morta) | `¬` |
+| `]` | `[` | `{` | `ª` |
+| `\` | `]` | `}` | `º` |
+| `/` | `;` | `:` | |
 
-**Acentos mortos:** aperte a tecla do acento e depois a vogal. Exemplos:
+### Swap ISO do Karabiner (peça 2)
 
-- `~` e `a` dá `ã`
-- `´` e `e` dá `é`
-- `^` e `o` dá `ô`
-- `¨` e `u` dá `ü`
+| Tecla | Sozinha | Shift |
+|-------|---------|-------|
+| `` ` `` | `'` (apóstrofo) | `"` (aspas) |
 
-## Teclas extras com Option
+### Regras do Karabiner (peça 3)
 
-O ABNT2 tem duas teclas que o MX Keys não tem. Elas foram criadas no Karabiner, usando **Option**:
+São as teclas que **não existem** no teclado americano, mas existem no ABNT2:
 
-| Combinação | Resultado |
-|---|---|
-| `Option` + `/` | `/` |
-| `Option` + `Shift` + `/` | `?` |
-| `Option` + `\` | `\` |
-| `Option` + `Shift` + `\` | `\|` |
+| Combinação | Gera | Tecla extra do ABNT2 |
+|------------|------|----------------------|
+| `Option` + `/` | `/` | `/ ?` |
+| `Option` + `Shift` + `/` | `?` | `/ ?` |
+| `Option` + `Shift` + `\` | `\|` | `\ \|` |
+| `Option` + `Ctrl` + `Shift` + `\` | `\` | `\ \|` |
 
----
+> `Option`, `Ctrl` e `Shift` valem tanto do lado esquerdo quanto do direito.
 
-## Resumo das configurações
+### Teclas mortas (acentos)
 
-Tudo o que precisa estar configurado para funcionar:
+`´` `` ` `` `~` `^` `¨` são **teclas mortas**: aperte o acento e **depois a letra**.
 
-| Onde | Configuração |
-|---|---|
-| macOS → Fontes de Entrada | Somente **Português – ABNT2** |
-| macOS → Tipo de teclado | **ANSI** |
-| Karabiner → Devices → MX KEYS S | **Modify events** ligado |
-| Karabiner → Devices → MX KEYS S | **Swap ISO layout-specific keys** desligado |
-| Karabiner → Devices → MX KEYS S | **Ignore vendor events** ligado (recomendado) |
-| Karabiner → Complex Modifications | Regra **MX Keys S: Option + / = / e ?...** ativada |
+| Digite | Resultado |
+|--------|-----------|
+| `´` + `a` | á |
+| `` ` `` + `a` | à |
+| `~` + `a` | ã |
+| `^` + `e` | ê |
+| `¨` + `u` | ü |
 
-O `ç`, os acentos e o resto das teclas vêm do layout **Português – ABNT2** do próprio macOS. Se houver outras regras do Karabiner ativas para este teclado (por exemplo, remapeamentos antigos de `;`, `'` ou `[`), desative-as, porque entram em conflito.
+Para escrever o sinal sozinho, aperte o acento e depois **Espaço**.
 
 ---
 
-## Como funciona o código
+## Solução de problemas
 
-O macOS trata o ABNT2 como um teclado com 105 teclas (ISO), e o MX Keys S americano tem 104 (ANSI). Faltam duas teclas, então a regra cria as duas usando **Option**.
+**Uma regra não faz nada.**
+Confira se o **Modify events** está ligado para o seu teclado e se o `vendor_id`/`product_id` do JSON são os do seu teclado (passo 4).
 
-Cada bloco do código faz uma coisa:
+**A tecla sai diferente do esperado.**
+Abra o **Karabiner-EventViewer**, aba **Main**, aperte a tecla e veja o `key_code` que o Karabiner enxerga. Isso mostra se o problema está na regra ou no layout.
 
-- `from`: a tecla que você aperta.
-  - `"key_code": "slash"` é a tecla `/` do teclado americano.
-  - `"mandatory": ["option"]` significa que o Option precisa estar apertado.
-- `to`: o que o Mac recebe no lugar.
-  - `international1` é o código da tecla `/ ?` do ABNT2.
-  - `grave_accent_and_tilde` é o código da tecla `\ |` do ABNT2.
-  - `"modifiers": ["left_shift"]` envia junto o Shift, para gerar `?` e `|`.
-- `conditions`: a regra só vale para o **MX KEYS S**, identificado pelo `vendor_id` (1133, Logitech) e pelo `product_id` (45944). O teclado do próprio Mac não é afetado.
+**Os acentos saem errados ou a tecla `` ` `` não dá `'` e `"`.**
+Verifique se o layout **ABNT2** é o ativo na barra de menus e se o **Swap ISO layout-specific keys** está ligado.
 
-Cada tecla tem dois blocos: um com **Option + Shift** e outro só com **Option**. O bloco com Shift vem primeiro, para ser avaliado antes.
+**Option + `\` gera `º`, e não `\`.**
+É o comportamento esperado do ABNT2. A contrabarra `\` vem de **Option + Ctrl + Shift + `\`** (veja a tabela das regras do Karabiner).
 
----
-
-## Usando outro teclado
-
-A regra está presa ao MX KEYS S pelos IDs. Para outro teclado americano:
-
-1. No Karabiner, abra **Devices** e anote o **Vendor ID** e o **Product ID** do seu teclado.
-2. Troque `1133` e `45944` na regra por esses números (em decimal).
-
-Se o teclado for ANSI, o restante da regra funciona igual.
-
----
-
-## Problemas comuns
-
-**O `§` aparece à esquerda do `1`.**
-O tipo de teclado ainda está como ISO. Refaça o passo 1 e escolha **ANSI**. Confirme também que **Swap ISO layout-specific keys** está desligado.
-
-**A regra não faz nada.**
-- Confirme que **Modify events** está ligado para o MX KEYS S em **Devices**.
-- Confirme que o Karabiner tem as permissões de Monitoramento de Entrada e a extensão do sistema liberada.
-- Veja se a regra está ativa em **Complex Modifications**.
-- Reinicie o Karabiner.
-
-**O Option + `/` não gera `/` nem `?`.**
-O layout ABNT2 do Mac tem um atalho nativo para teclados sem essa tecla: **Option + Q** gera `/` e **Option + W** gera `?`. Você pode usar esses atalhos ou trocar o `to` dos dois primeiros blocos da regra por:
-
-```json
-{ "key_code": "q", "modifiers": ["option"] }
-```
-(sem Shift) e
-```json
-{ "key_code": "w", "modifiers": ["option"] }
-```
-(com Shift).
-
-**O Option + `\` gera `'` ou `"`.**
-O `to` está com `non_us_backslash`. Use `grave_accent_and_tilde`, como na regra deste repositório.
-
-**Estou com outro idioma/layout ativo.**
-Deixe apenas **Português – ABNT2** em **Fontes de Entrada**, para o Mac não trocar de layout sozinho.
+**Outros símbolos com Option (`¹ ² ³ £ ¢` etc.).**
+O layout ABNT2 do macOS usa o Option como AltGr. Confira o que cada tecla gera no **Visualizador de Teclado** (Ajustes do Sistema → Teclado → Fontes de Entrada → mostrar o Visualizador de Teclado).
 
 ---
 
 ## Arquivos deste repositório
 
 | Arquivo | Descrição |
-|---|---|
+|---------|-----------|
 | `README.md` | Este guia |
-| `mx-keys-abnt2.json` | Regra do Karabiner pronta para importar |
-| `mapa-teclado-mx-keys-abnt2.png` | Mapa visual das teclas |
+| `mx-keys-s-abnt2.json` | Regra para colar em *Complex Modifications → Add your own rule* |
+| `teclado_abnt2_estilo_escuro.png` | Mapa visual das teclas |
 
 ---
 
-## Observações
+## Créditos
 
-- Feito e ajustado para o **Logitech MX Keys S** (layout americano).
-- O Option + `/` e o Option + `\` dependem de como o macOS interpreta o teclado. Se algo sair diferente no seu Mac, ajuste conforme a seção [Problemas comuns](#problemas-comuns).
-- Contribuições e correções são bem-vindas.
+- [Karabiner-Elements](https://karabiner-elements.pqrs.org/), de Takayama Fumihiko.
