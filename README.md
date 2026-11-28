@@ -4,6 +4,8 @@ Como usar um teclado **físico americano (ANSI)** no macOS digitando como um **A
 
 Testado com o **Logitech MX Keys S** (versão americana) no macOS, usando **Karabiner-Elements**.
 
+![Logitech MX Keys S, teclado americano](teclado-mxkey-s.jpg)
+
 ![Mapa das teclas](teclado_abnt2_estilo_escuro.png)
 
 ---
@@ -165,6 +167,7 @@ O layout ABNT2 do macOS usa o Option como AltGr. Confira o que cada tecla gera n
 |---------|-----------|
 | `README.md` | Este guia |
 | `mx-keys-s-abnt2.json` | Regra para colar em *Complex Modifications → Add your own rule* |
+| `teclado-mxkey-s.jpg` | Foto do teclado Logitech MX Keys S (americano) |
 | `teclado_abnt2_estilo_escuro.png` | Mapa visual das teclas |
 | `karabiner-onde-achar-ids.png` | Onde achar o Vendor ID e o Product ID no Karabiner |
 
