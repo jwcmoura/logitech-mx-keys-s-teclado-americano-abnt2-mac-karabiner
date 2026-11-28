@@ -69,6 +69,10 @@ Para descobrir os seus:
 2. Vá na aba **Devices**.
 3. Procure o seu teclado e anote o **vendor_id** e o **product_id**.
 
+Você também encontra esses números em **Karabiner-Elements → Devices**, na tabela à direita do seu teclado (campos **Vendor ID** e **Product ID**). Use o número **decimal**, o primeiro, e não o hexadecimal entre parênteses.
+
+![Onde achar o Vendor ID e o Product ID](karabiner-onde-achar-ids.png)
+
 ### 5. Importar as regras (teclas extras do ABNT2)
 
 1. No Karabiner-Elements, vá em **Complex Modifications**.
@@ -162,6 +166,7 @@ O layout ABNT2 do macOS usa o Option como AltGr. Confira o que cada tecla gera n
 | `README.md` | Este guia |
 | `mx-keys-s-abnt2.json` | Regra para colar em *Complex Modifications → Add your own rule* |
 | `teclado_abnt2_estilo_escuro.png` | Mapa visual das teclas |
+| `karabiner-onde-achar-ids.png` | Onde achar o Vendor ID e o Product ID no Karabiner |
 
 ---
 
