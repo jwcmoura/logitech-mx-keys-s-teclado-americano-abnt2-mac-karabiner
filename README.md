@@ -61,7 +61,7 @@ A solução tem 3 peças que trabalham juntas:
 
 ### 4. Descobrir o `vendor_id` e o `product_id` do seu teclado
 
-O arquivo de regras já vem com os IDs do **MX Keys S** (`vendor_id: 1133`, `product_id: 45944`). **Se o seu teclado for outro, troque esses números.**
+Cada teclado tem os seus IDs (e eles podem mudar conforme a forma de conexão, como Bluetooth ou receptor). Por isso o arquivo de regras vem com `vendor_id: xxxx` e `product_id: xxxxx` no lugar dos números. **Você precisa trocar `xxxx` e `xxxxx` pelos números do seu teclado antes de colar no Karabiner.**
 
 Para descobrir os seus:
 
@@ -74,7 +74,7 @@ Para descobrir os seus:
 1. No Karabiner-Elements, vá em **Complex Modifications**.
 2. Clique em **Add your own rule**.
 3. Apague o conteúdo do editor e **cole o conteúdo do arquivo [`mx-keys-s-abnt2.json`](mx-keys-s-abnt2.json)**.
-4. Se o seu teclado não for o MX Keys S, troque `product_id` e `vendor_id` (em todas as 4 regras) pelos valores do passo 4.
+4. Troque `xxxxx` (`product_id`) e `xxxx` (`vendor_id`) pelos valores do seu teclado, anotados no passo 4. Isso vale para as **4 regras** (8 lugares no total). Sem essa troca, o Karabiner rejeita o JSON.
 5. Clique em **OK**. A regra aparece na lista e já fica **ativa**.
 
 > Quer que as regras valham para **qualquer** teclado? Remova o bloco `"conditions"` de cada regra. Atenção: isso também vale para o teclado interno do Mac.

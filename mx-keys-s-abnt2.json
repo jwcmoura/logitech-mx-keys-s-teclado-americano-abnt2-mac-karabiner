@@ -6,8 +6,8 @@
                 {
                     "identifiers": [
                         {
-                            "product_id": 45944,
-                            "vendor_id": 1133
+                            "product_id": xxxxx,
+                            "vendor_id": xxxx
                         }
                     ],
                     "type": "device_if"
@@ -25,8 +25,8 @@
                 {
                     "identifiers": [
                         {
-                            "product_id": 45944,
-                            "vendor_id": 1133
+                            "product_id": xxxxx,
+                            "vendor_id": xxxx
                         }
                     ],
                     "type": "device_if"
@@ -49,8 +49,8 @@
                 {
                     "identifiers": [
                         {
-                            "product_id": 45944,
-                            "vendor_id": 1133
+                            "product_id": xxxxx,
+                            "vendor_id": xxxx
                         }
                     ],
                     "type": "device_if"
@@ -68,8 +68,8 @@
                 {
                     "identifiers": [
                         {
-                            "product_id": 45944,
-                            "vendor_id": 1133
+                            "product_id": xxxxx,
+                            "vendor_id": xxxx
                         }
                     ],
                     "type": "device_if"
