@@ -176,4 +176,4 @@ O layout ABNT2 do macOS usa o Option como AltGr. Confira o que cada tecla gera n
 ## Créditos
 
 - [Karabiner-Elements](https://karabiner-elements.pqrs.org/), de Takayama Fumihiko.
-- [MX KEY S - ABNT2](https://instagram.com/jwcmoura), de William Moura.
+- [MX KEY S - ABNT2](https://instagram.com/jwcmoura), por William Moura.
