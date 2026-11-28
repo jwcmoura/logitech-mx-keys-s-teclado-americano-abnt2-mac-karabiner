@@ -1,4 +1,4 @@
-# Teclado americano com layout ABNT2 no Mac (Logitech MX Keys S)
+# Teclado americano com layout ABNT2 no macOs (Logitech MX Keys S)
 
 Como usar um teclado **físico americano (ANSI)** no macOS digitando como um **ABNT2 brasileiro**: `ç`, acentos, `º`, `ª`, aspas, barras, tudo no lugar certo, sem precisar comprar um teclado ABNT2.
 
